@@ -22,4 +22,16 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+# --- build executable ---
+add_executable(humanoid_walking src/walking_node.cpp)
+ament_target_dependencies(humanoid_walking rclcpp geometry_msgs)
+
+# --- install executable ---
+install(TARGETS humanoid_walking
+  DESTINATION lib/${PROJECT_NAME})
+
+# --- install launch / params so `ros2 launch` can find them ---
+install(DIRECTORY launch params
+  DESTINATION share/${PROJECT_NAME})
+
 ament_package()
