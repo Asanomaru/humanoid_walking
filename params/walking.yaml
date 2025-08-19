@@ -1,21 +1,7 @@
 humanoid_walking:
   ros__parameters:
-    # モデル/時間
-    zh: 0.80
-    g: 9.81
-    dt: 0.01
-    Tsup: 0.80
-    Tds: 0.20
-
-    # 歩幅
-    sx: 0.20
-    sy: 0.20
-    start_leg: "LEFT"
-
-    # 初期支持足
-    px0: 0.00
-    py0: 0.10      # = sy/2
-
-    # 初期CoM
-    x0: 0.00       
-    y0: 0.00
+    waist_pos_z: 0.333 #[m]
+    control_cycle: 0.01 #[s]
+    walking_cycle: 0.8
+    both_leg_support_period: 0.5
+    single_leg_support_period: 0.3
