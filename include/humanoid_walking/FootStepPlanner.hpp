@@ -1,6 +1,8 @@
 #include <rclcpp/rclcpp.hpp>
+#include <std_msgs/msg/float64_multi_array.hpp>
 #include <vector>
 #include <deque>
+#include <memory>
 
 namespace foot_step_planner {
 
@@ -44,9 +46,14 @@ private:
     Footstep current_support_foot_;   //現在の着地位置
     Footstep::Leg next_swing_leg_;    //次に動かす足の記録
     WalkParam current_walk_params_;   //歩行パラメータの記録
+    
+    int step_count_ = 0;               //ステップ数の記録
 
-    int plan_length_;             //何歩分の着地位置を記録するかの設定
-    double default_step_width_; //左右の歩幅
+    int plan_length_;                //何歩分の着地位置を記録するかの設定
+    double default_step_width_;      //左右の歩幅
+    
+    rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr plan_publisher_;
+    rclcpp::TimerBase::SharedPtr timer_;
 };
 
 }
